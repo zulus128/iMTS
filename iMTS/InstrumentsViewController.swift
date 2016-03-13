@@ -9,7 +9,7 @@
 import Alamofire
 import AlamofireObjectMapper
 
-class InstrumentsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class InstrumentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -18,7 +18,7 @@ class InstrumentsController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
+        self.title = "Instruments"
         timerUpdate()
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("timerUpdate"), userInfo: nil, repeats: true)
     }
@@ -74,6 +74,15 @@ class InstrumentsController: UIViewController, UITableViewDataSource, UITableVie
         
     }
 
+    //MARK: Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "goMarketBook" {
+            let destViewController = segue.destinationViewController as! MarketBookViewController
+            let instr = instrArray[tableView.indexPathForSelectedRow?.row ?? 0]
+            destViewController.instrId = instr.id
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
