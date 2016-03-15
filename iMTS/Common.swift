@@ -12,6 +12,8 @@ let serverUrl = "http://127.0.0.1:3000"
 let instrumentsUrl = serverUrl + "/api/instruments"
 let marketBookUrl = serverUrl + "/api/marketbook/%d"
 let dayChartUrl = serverUrl + "/api/daychart/%d"
+let weekChartUrl = serverUrl + "/api/weekchart/%d"
+let monthChartUrl = serverUrl + "/api/monthchart/%d"
 
 class Common: NSObject {
 

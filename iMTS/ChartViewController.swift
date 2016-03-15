@@ -12,13 +12,26 @@ import Charts
 import Alamofire
 import AlamofireObjectMapper
 
-class ChartViewController: UIViewController, ChartViewDelegate {
+enum PeriodType : Int {
+    
+    case Day = 0, Week, Month
+}
 
+class ChartViewController: UIViewController, ChartViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+
+    let periods = ["Day", "Week", "Month"]
+    
     @IBOutlet weak var instrLabel: UILabel!
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var chartView: CandleStickChartView!
+    @IBOutlet weak var picker: UIPickerView!
     
     var chart = [ChartItem]()
+    var chartType:PeriodType = .Day
+    
+    @IBAction func clickPeriod(sender: AnyObject) {
+        self.picker.hidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +59,28 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         chartView.legend.enabled = false
 //        setDataCount(39, range: 100)
         
+        self.picker.hidden = true
+        picker.backgroundColor = UIColor.lightGrayColor()
+
     }
 
-    override func viewWillAppear(animated: Bool) {
-        
-        chartView.descriptionText = Common.sharedInstance.instrName!
-        self.instrLabel.text = Common.sharedInstance.instrName!
+    func refresh() {
 
-        Alamofire.request(.GET, String(format:dayChartUrl, Common.sharedInstance.instrId!))
+        self.instrLabel.text = Common.sharedInstance.instrName!
+        
+        var strurl = dayChartUrl
+        switch chartType {
+        case .Day:  strurl = dayChartUrl
+                    chartView.descriptionText = periods[0]
+                    self.periodLabel.text = periods[0]
+        case .Week: strurl = weekChartUrl
+                    chartView.descriptionText = periods[1]
+                    self.periodLabel.text = periods[1]
+        case .Month:strurl = monthChartUrl
+                    chartView.descriptionText = periods[2]
+                    self.periodLabel.text = periods[2]
+        }
+        Alamofire.request(.GET, String(format:strurl, Common.sharedInstance.instrId!))
             .responseArray("data") { (response:Response<[ChartItem], NSError>) -> Void in
                 
                 if response.result.error == nil {
@@ -63,6 +90,11 @@ class ChartViewController: UIViewController, ChartViewDelegate {
                     }
                 }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        refresh()
     }
     
     func setData() {
@@ -139,7 +171,40 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    //MARK: UIPicker datasource
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return periods.count
+    }
+    
+    //MARK: UIPicker delegate
+    
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//
+//        return periods[row]
+//    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: periods[row], attributes: [NSForegroundColorAttributeName:UIColor.blueColor()])
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        self.picker.hidden = true
+        switch row {
+        case 0: chartType = .Day
+        case 1: chartType = .Week
+        case 2: chartType = .Month
+        default: chartType = .Day
+        }
+        refresh()
+    }
 }
 

@@ -43,21 +43,48 @@
                                     <constraint firstAttribute="height" constant="21" id="YSm-Db-bJl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X0-Ic-q4h">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X0-Ic-q4h">
                                 <rect key="frame" x="170" y="20" width="135" height="21"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="hKf-vT-gyP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0jg-9S-Itm" appends="YES" id="Yrf-il-G8U"/>
+                                </connections>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sIr-Oi-0qC" customClass="CandleStickChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="62" width="320" height="449"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qK0-8F-bct">
+                                        <rect key="frame" x="0.0" y="-7" width="320" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="an1-on-qvt"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="9Et-ug-LW7" id="3sW-S0-I34"/>
+                                            <outlet property="delegate" destination="9Et-ug-LW7" id="kUE-p1-EPY"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qK0-8F-bct" firstAttribute="top" secondItem="sIr-Oi-0qC" secondAttribute="top" id="G91-w1-DaO"/>
+                                    <constraint firstAttribute="bottom" secondItem="qK0-8F-bct" secondAttribute="bottom" id="qGJ-Xu-VyW"/>
+                                    <constraint firstItem="qK0-8F-bct" firstAttribute="leading" secondItem="sIr-Oi-0qC" secondAttribute="leading" id="tbk-fZ-2bv"/>
+                                    <constraint firstAttribute="trailing" secondItem="qK0-8F-bct" secondAttribute="trailing" id="yDi-RE-8mM"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qGJ-Xu-VyW"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,9 +106,15 @@
                         <outlet property="chartView" destination="sIr-Oi-0qC" id="2zO-j3-ed8"/>
                         <outlet property="instrLabel" destination="81T-km-KLT" id="W7q-3c-nCb"/>
                         <outlet property="periodLabel" destination="8X0-Ic-q4h" id="VOT-aD-tka"/>
+                        <outlet property="picker" destination="qK0-8F-bct" id="qib-cW-XuI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ywe-SD-n0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0jg-9S-Itm">
+                    <connections>
+                        <action selector="clickPeriod:" destination="9Et-ug-LW7" id="cz4-hB-VcP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="326" y="298"/>
         </scene>
