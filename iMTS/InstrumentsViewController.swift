@@ -21,6 +21,8 @@ class InstrumentsViewController: UIViewController, UITableViewDataSource, UITabl
         self.title = "Instruments"
         timerUpdate()
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("timerUpdate"), userInfo: nil, repeats: true)
+        Common.sharedInstance.instrId = 1
+        Common.sharedInstance.instrName = ""
     }
 
     func timerUpdate() {
@@ -31,6 +33,10 @@ class InstrumentsViewController: UIViewController, UITableViewDataSource, UITabl
                 if response.result.error == nil {
                     if let items = response.result.value {
                         self.instrArray = items
+                        if items.count > 0 {
+                            Common.sharedInstance.instrId = items[0].id!
+                            Common.sharedInstance.instrName = items[0].ticker!
+                        }
                         self.tableView.reloadData()
                     }
                 }
@@ -80,6 +86,8 @@ class InstrumentsViewController: UIViewController, UITableViewDataSource, UITabl
             let destViewController = segue.destinationViewController as! MarketBookViewController
             let instr = instrArray[tableView.indexPathForSelectedRow?.row ?? 0]
             destViewController.instrId = instr.id
+            Common.sharedInstance.instrId = instr.id
+            Common.sharedInstance.instrName = instr.ticker
         }
     }
     

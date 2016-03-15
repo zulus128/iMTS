@@ -24,6 +24,67 @@
             </objects>
             <point key="canvasLocation" x="326" y="-320"/>
         </scene>
+        <!--Charts-->
+        <scene sceneID="9Yd-uR-vPP">
+            <objects>
+                <viewController id="9Et-ug-LW7" customClass="ChartViewController" customModule="iMTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CzH-BP-K8J"/>
+                        <viewControllerLayoutGuide type="bottom" id="A2S-Kr-ATA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j7X-or-EsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81T-km-KLT">
+                                <rect key="frame" x="12" y="20" width="136" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Dx7-12-Qpn"/>
+                                    <constraint firstAttribute="height" constant="21" id="YSm-Db-bJl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X0-Ic-q4h">
+                                <rect key="frame" x="170" y="20" width="135" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hKf-vT-gyP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sIr-Oi-0qC" customClass="CandleStickChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="62" width="320" height="449"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sIr-Oi-0qC" secondAttribute="trailing" id="7Bd-kL-nmE"/>
+                            <constraint firstItem="8X0-Ic-q4h" firstAttribute="leading" secondItem="81T-km-KLT" secondAttribute="trailing" constant="8" id="Bjf-5S-g3t"/>
+                            <constraint firstItem="81T-km-KLT" firstAttribute="top" secondItem="CzH-BP-K8J" secondAttribute="bottom" constant="8" id="IcY-Hj-JUn"/>
+                            <constraint firstItem="8X0-Ic-q4h" firstAttribute="top" secondItem="CzH-BP-K8J" secondAttribute="bottom" constant="8" id="Kqn-pK-aTZ"/>
+                            <constraint firstItem="81T-km-KLT" firstAttribute="leading" secondItem="j7X-or-EsS" secondAttribute="leading" constant="30" id="Ln6-xT-E98"/>
+                            <constraint firstItem="sIr-Oi-0qC" firstAttribute="top" secondItem="8X0-Ic-q4h" secondAttribute="bottom" constant="10" id="ORZ-Wm-Tp2"/>
+                            <constraint firstItem="sIr-Oi-0qC" firstAttribute="leading" secondItem="j7X-or-EsS" secondAttribute="leading" id="P3Z-wc-pYL"/>
+                            <constraint firstAttribute="trailing" secondItem="8X0-Ic-q4h" secondAttribute="trailing" constant="8" id="tOv-Td-8WA"/>
+                            <constraint firstItem="A2S-Kr-ATA" firstAttribute="top" secondItem="sIr-Oi-0qC" secondAttribute="bottom" id="wzG-q7-J2f"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Charts" image="second" id="y4s-Fz-jdL"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="chartView" destination="sIr-Oi-0qC" id="2zO-j3-ed8"/>
+                        <outlet property="instrLabel" destination="81T-km-KLT" id="W7q-3c-nCb"/>
+                        <outlet property="periodLabel" destination="8X0-Ic-q4h" id="VOT-aD-tka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ywe-SD-n0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="326" y="298"/>
+        </scene>
         <!--Instruments-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -258,26 +319,6 @@
             </objects>
             <point key="canvasLocation" x="1200" y="-320"/>
         </scene>
-        <!--Charts-->
-        <scene sceneID="wg7-f3-ORb">
-            <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="iMTS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Charts" image="second" id="cPa-gy-q4n"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="360"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -291,7 +332,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="6Wu-vf-yhD" kind="relationship" relationship="viewControllers" id="MgF-DJ-odv"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="9Et-ug-LW7" kind="relationship" relationship="viewControllers" id="kFN-l0-Ur0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

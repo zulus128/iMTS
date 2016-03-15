@@ -11,8 +11,12 @@ import UIKit
 let serverUrl = "http://127.0.0.1:3000"
 let instrumentsUrl = serverUrl + "/api/instruments"
 let marketBookUrl = serverUrl + "/api/marketbook/%d"
+let dayChartUrl = serverUrl + "/api/daychart/%d"
 
 class Common: NSObject {
+
+    var instrId:Int?
+    var instrName:String?
 
     override init() {
         
