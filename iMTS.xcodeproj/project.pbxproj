@@ -176,6 +176,7 @@
 				7E0A7D331C8D8FE2001C92DC /* Resources */,
 				F44ADA656EF8B16640B5C3AD /* Embed Pods Frameworks */,
 				FF2D7FF8ACBBA551A04CCAC4 /* Copy Pods Resources */,
+				7E5EFA221C99606B00F0176B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -198,6 +199,7 @@
 				TargetAttributes = {
 					7E0A7D341C8D8FE2001C92DC = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 7TTF49AXF6;
 					};
 				};
 			};
@@ -233,6 +235,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7E5EFA221C99606B00F0176B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 61b97f836813051adca5ca79f27795ff58da96c5 cb21e610491f28b17202b44e90ce49c8b896a6a18bfa739a6f1d93aedfae1078";
+		};
 		E81032DE2083269522A71416 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,11 +422,13 @@
 			baseConfigurationReference = 93C19484A2836A8A9A80F1FD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iMTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Indy.iMTS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vkassin.imts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f3d53aff-bf88-497f-85a2-52cc7da2b58f";
 			};
 			name = Debug;
 		};
@@ -420,11 +437,13 @@
 			baseConfigurationReference = 39E33ABA1492884DDCE23BE4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iMTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Indy.iMTS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vkassin.imts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f3d53aff-bf88-497f-85a2-52cc7da2b58f";
 			};
 			name = Release;
 		};

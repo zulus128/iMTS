@@ -8,7 +8,8 @@
 
 import UIKit
 
-let serverUrl = "http://127.0.0.1:3000"
+//let serverUrl = "http://127.0.0.1:3000"
+let serverUrl = "http://89.107.96.187:3000"
 let instrumentsUrl = serverUrl + "/api/instruments"
 let marketBookUrl = serverUrl + "/api/marketbook/%d"
 let dayChartUrl = serverUrl + "/api/daychart/%d"
